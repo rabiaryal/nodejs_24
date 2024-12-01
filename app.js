@@ -1,5 +1,5 @@
 const express = require('express');
-// this is to 
+// this is to import express js framework
 const mysql = require('mysql2');
 
 const app = express();
@@ -9,9 +9,10 @@ const PORT = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'test' // Replace 'test' with your database name
+    password: 'sagarmatha@28',
+    database: 'nodeproject02' // Replace 'test' with your database name
 });
+// it assigns the object to the db as the instance of the mysql database
 
 db.connect((err) => {
     if (err) {
@@ -20,10 +21,12 @@ db.connect((err) => {
     }
     console.log('Connected to the database.');
 });
+// fro displaying the success and error message
+
 
 // Routes
 app.get('/users', (req, res) => {
-    db.query('SELECT * FROM users', (err, results) => {
+    db.query('SELECT * FROM employeetable', (err, results) => {
         if (err) {
             console.error('Error executing query:', err.message);
             return res.status(500).send('Internal Server Error');
